@@ -11,7 +11,7 @@ This is based on <a href="https://lunrjs.com/guides/getting_started.html">Gettin
 `;
 
 function prtt(s) {
-  appDiv.innerHTML += '<br><br>' + JSON.stringify(s);
+  appDiv.innerHTML += '<br><br>' + JSON.stringify(s, null, 2);
 }
 
 function printLength(objectRes, mainRes) {
@@ -23,7 +23,7 @@ function printLength(objectRes, mainRes) {
       returnRes = returnRes + Object.keys(mainRes).length;
     }
   }
-  prtt(returnRes);
+  prtt('No. of times the term occurs:' + returnRes);
 }
 
 const documents = [
@@ -83,13 +83,14 @@ const idx = builder.build();
 // prtt('Length of res: ' + results1.length);
 // prtt('Length of res: ' + results2.length);
 
-const results1 = idx.search('The');
-const results2 = idx.search('right');
+const results1 = idx.search('right');
+// const results2 = idx.search('right');
 var res1 = {};
 var res2 = {};
-prtt({ results1, results2 });
 printLength(results1, res1);
-printLength(results2, res2);
+prtt({ results1 });
+
+// printLength(results2, res2);
 // if (results1.length > 0) {
 //   res1 = results1[0].matchData.metadata;
 // }
